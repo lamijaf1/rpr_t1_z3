@@ -1,19 +1,21 @@
-package com.company;
+package com.company; //sat treba biti u istom paketu!
 
 public class Sat {
-     private int sekunde;
-     private int sati;
-     private int minute;
+     private  int sekunde;
+     private  int sati;
+     private  int minute;
 
     public Sat(int sati, int minute, int sekunde) {
-        Postavi(sati, minute, sekunde);
-    }
-     void Postavi(int sati, int minute, int sekunde) {
         this.setSati(sati);
         this.setMinute(minute);
         this.setSekunde(sekunde);
     }
-     public void Sljedeci() {
+     void   Postavi(int sati, int minute, int sekunde) {
+        this.setSati(sati);
+        this.setMinute(minute);
+        this.setSekunde(sekunde);
+    }
+     public  void Sljedeci() {
         setSekunde(getSekunde() + 1);
         if (getSekunde() == 60) {
             setSekunde(0);
@@ -25,7 +27,7 @@ public class Sat {
         }
         if (getSati() == 24) setSati(0);
     }
-    public void Prethodni() {
+    public  void Prethodni() {
         setSekunde(getSekunde() - 1);
         if (getSekunde() == -1) {
             setSekunde(59);
@@ -38,23 +40,14 @@ public class Sat {
         if (getSati() == -1) setSati(23);
     }
 
-    public   void PomjeriZa(int pomak) {
+    public    void PomjeriZa(int pomak) {
         if (pomak > 0) for (int i = 0; i < pomak; i++) Sljedeci();
         else for (int i = 0; i < -pomak; i++) Prethodni();
     }
     public  void Ispisi() {
         System.out.printf("%d:%d:%d\n", getSati(), getMinute(), getSekunde());
     }
-    public static void main(String[] args) {
-        Sat s = new Sat(15, 30, 45);
-        s.Ispisi();
-        s.Sljedeci();
-        s.Ispisi();
-        s.PomjeriZa(-48);
-        s.Ispisi();
-        s.Postavi(0, 0, 0);
-        s.Ispisi();
-    }
+
 
     public int getSekunde() {
         return sekunde;
